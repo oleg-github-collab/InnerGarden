@@ -845,5 +845,9 @@ export const TRANSLATIONS = {
     }
 };
 
+// Fill missing German and Spanish keys using English as a base
+TRANSLATIONS.de = { ...TRANSLATIONS.en, ...TRANSLATIONS.de };
+TRANSLATIONS.es = { ...TRANSLATIONS.en, ...TRANSLATIONS.es };
+
 // Export default
 export default TRANSLATIONS;
