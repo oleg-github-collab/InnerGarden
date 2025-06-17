@@ -41,6 +41,7 @@ export const TRANSLATIONS = {
         'preloader.loadingInteractive': 'Завантаження інтерактивних елементів...',
         'preloader.loadingAssets': 'Завантаження ресурсів...',
         'preloader.initializingExperience': 'Ініціалізація досвіду...',
+        'preloader.ready': 'Готово',
         'preloader.welcome': 'Ласкаво просимо',
         'preloader.welcomeMessage': 'до магічного світу INNER GARDEN',
         'preloader.enterExhibition': 'Увійти до виставки',
@@ -435,6 +436,7 @@ export const TRANSLATIONS = {
         'preloader.loadingInteractive': 'Loading interactive elements...',
         'preloader.loadingAssets': 'Loading assets...',
         'preloader.initializingExperience': 'Initializing experience...',
+        'preloader.ready': 'Ready',
         'preloader.welcome': 'Welcome',
         'preloader.welcomeMessage': 'to the magical world of INNER GARDEN',
         'preloader.enterExhibition': 'Enter Exhibition',
@@ -812,7 +814,8 @@ export const TRANSLATIONS = {
         
         'hero.title': 'Entdecken Sie Ihren inneren Garten',
         'hero.subtitle': 'Eine interaktive Reise in die Welt der Emotionen, Erinnerungen und Träume durch Marina Kaminskás Kunst',
-        
+        'preloader.ready': 'Bereit',
+
         // Additional German translations would continue...
     },
     
@@ -836,7 +839,8 @@ export const TRANSLATIONS = {
         
         'hero.title': 'Descubre Tu Jardín Interior',
         'hero.subtitle': 'Un viaje interactivo al mundo de las emociones, recuerdos y sueños a través del arte de Marina Kaminska',
-        
+        'preloader.ready': 'Listo',
+
         // Additional Spanish translations would continue...
     }
 };

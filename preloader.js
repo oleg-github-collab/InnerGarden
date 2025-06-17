@@ -16,11 +16,11 @@ export class AdvancedPreloader {
         this.progress = 0;
         this.selectedLanguage = null;
         this.loadingSteps = [
-            { progress: 20, message: 'preparing' },
-            { progress: 40, message: 'loadingInteractive' },
-            { progress: 60, message: 'loadingAssets' },
-            { progress: 80, message: 'initializingExperience' },
-            { progress: 100, message: 'ready' }
+            { progress: 20, message: 'preloader.preparing' },
+            { progress: 40, message: 'preloader.loadingInteractive' },
+            { progress: 60, message: 'preloader.loadingAssets' },
+            { progress: 80, message: 'preloader.initializingExperience' },
+            { progress: 100, message: 'preloader.ready' }
         ];
         this.currentStep = 0;
         this.init();
@@ -446,7 +446,7 @@ export class AdvancedPreloader {
         }
         stageContainer.innerHTML = `
             <div class="language-selection">
-                <h2 class="language-title" data-translate="chooseLang">Choose Language</h2>
+                <h2 class="language-title" data-translate="preloader.selectLanguage">Choose Language</h2>
                 <div class="language-grid">
                     <button class="language-btn" data-lang="uk">
                         <span class="flag">🇺🇦</span> Українська
@@ -461,9 +461,12 @@ export class AdvancedPreloader {
                         <span class="flag">🇪🇸</span> Español
                     </button>
                 </div>
-                <button class="continue-btn" data-translate="continue">Continue</button>
+                <button class="continue-btn" data-translate="preloader.continue">Continue</button>
             </div>
         `;
+        if (window.languageManager && typeof window.languageManager.updateAllElements === 'function') {
+            window.languageManager.updateAllElements();
+        }
 
         this.bindLanguageSelection();
     }
@@ -539,9 +542,13 @@ export class AdvancedPreloader {
                 <div class="loading-progress">
                     <div class="progress-bar"></div>
                 </div>
-                <div class="loading-text" data-translate="loading">Loading...</div>
+                <div class="loading-text" data-translate="preloader.loading">Loading...</div>
             </div>
         `;
+
+        if (window.languageManager && typeof window.languageManager.updateAllElements === 'function') {
+            window.languageManager.updateAllElements();
+        }
 
         setTimeout(() => {
             const loadingStageDiv = stageContainer.querySelector('.loading-stage');
@@ -618,9 +625,9 @@ export class AdvancedPreloader {
         
         stageContainer.innerHTML = `
             <div class="welcome-stage">
-                <h1 class="welcome-title" data-translate="welcome">Welcome</h1>
-                <p class="welcome-message" data-translate="welcomeMessage">to the magical world of INNER GARDEN</p>
-                <button class="enter-btn" data-translate="enterExhibition">Enter Exhibition</button>
+                <h1 class="welcome-title" data-translate="preloader.welcome">Welcome</h1>
+                <p class="welcome-message" data-translate="preloader.welcomeMessage">to the magical world of INNER GARDEN</p>
+                <button class="enter-btn" data-translate="preloader.enterExhibition">Enter Exhibition</button>
             </div>
         `;
 

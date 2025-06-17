@@ -3,7 +3,7 @@
  * @module soundManager
  */
 
-import CONFIG from './config.js';
+import { CONFIG } from './config.js';
 import { Storage } from './utils.js';
 
 /**
