@@ -143,6 +143,11 @@ export class LanguageManager {
             translation = TRANSLATIONS[CONFIG.language.default]?.[key];
         }
 
+        // Additional fallback to English
+        if (!translation && CONFIG.language.default !== 'en') {
+            translation = TRANSLATIONS['en']?.[key];
+        }
+
         // Use fallback or key
         if (!translation) {
             translation = fallback || key;
