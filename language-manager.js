@@ -3,7 +3,7 @@
  * @module languageManager
  */
 
-import CONFIG from './config.js';
+import { CONFIG } from './config.js';
 import TRANSLATIONS from './translations.js';
 import { Storage } from './utils.js';
 
@@ -194,31 +194,31 @@ export class LanguageManager {
      */
     updateAllElements() {
         // Update text content
-        const textElements = document.querySelectorAll('[data-i18n]');
+        const textElements = document.querySelectorAll('[data-i18n], [data-translate]');
         textElements.forEach(element => this.updateElement(element));
 
         // Update attributes
-        const attrElements = document.querySelectorAll('[data-i18n-attr]');
+        const attrElements = document.querySelectorAll('[data-i18n-attr], [data-translate-attr]');
         attrElements.forEach(element => this.updateElementAttributes(element));
 
         // Update placeholders
-        const placeholderElements = document.querySelectorAll('[data-i18n-placeholder]');
+        const placeholderElements = document.querySelectorAll('[data-i18n-placeholder], [data-translate-placeholder]');
         placeholderElements.forEach(element => {
-            const key = element.getAttribute('data-i18n-placeholder');
+            const key = element.getAttribute('data-i18n-placeholder') || element.getAttribute('data-translate-placeholder');
             element.placeholder = this.t(key);
         });
 
         // Update titles
-        const titleElements = document.querySelectorAll('[data-i18n-title]');
+        const titleElements = document.querySelectorAll('[data-i18n-title], [data-translate-title]');
         titleElements.forEach(element => {
-            const key = element.getAttribute('data-i18n-title');
+            const key = element.getAttribute('data-i18n-title') || element.getAttribute('data-translate-title');
             element.title = this.t(key);
         });
 
         // Update aria-labels
-        const ariaElements = document.querySelectorAll('[data-i18n-aria-label]');
+        const ariaElements = document.querySelectorAll('[data-i18n-aria-label], [data-translate-aria-label]');
         ariaElements.forEach(element => {
-            const key = element.getAttribute('data-i18n-aria-label');
+            const key = element.getAttribute('data-i18n-aria-label') || element.getAttribute('data-translate-aria-label');
             element.setAttribute('aria-label', this.t(key));
         });
     }
@@ -228,7 +228,7 @@ export class LanguageManager {
      * @param {HTMLElement} element - Element to update
      */
     updateElement(element) {
-        const key = element.getAttribute('data-i18n');
+        const key = element.getAttribute('data-i18n') || element.getAttribute('data-translate');
         if (!key) return;
 
         // Check for parameters
@@ -283,7 +283,7 @@ export class LanguageManager {
      * @param {HTMLElement} element - Element to update
      */
     updateElementAttributes(element) {
-        const attrData = element.getAttribute('data-i18n-attr');
+        const attrData = element.getAttribute('data-i18n-attr') || element.getAttribute('data-translate-attr');
         if (!attrData) return;
 
         // Parse attribute data (format: "attr1:key1,attr2:key2")
