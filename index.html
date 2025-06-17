@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="INNER GARDEN - інтерактивна виставка Марини Камінської, що досліджує внутрішній світ через мистецтво">
+    <meta name="keywords" content="виставка, мистецтво, Марина Камінська, внутрішній сад, інтерактивне мистецтво, Київ">
+    <meta name="author" content="Марина Камінська">
+    <meta name="robots" content="index, follow">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://innergarden.art/">
+    <meta property="og:title" content="INNER GARDEN | Марина Камінська">
+    <meta property="og:description" content="Інтерактивна виставка що досліджує внутрішній світ через мистецтво">
+    <meta property="og:image" content="https://innergarden.art/assets/images/og-image.jpg">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://innergarden.art/">
+    <meta property="twitter:title" content="INNER GARDEN | Марина Камінська">
+    <meta property="twitter:description" content="Інтерактивна виставка що досліджує внутрішній світ через мистецтво">
+    <meta property="twitter:image" content="https://innergarden.art/assets/images/og-image.jpg">
+
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#667eea">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <title>INNER GARDEN | Марина Камінська</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <link rel="stylesheet" href="styles.css"> 
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+    <a href="#main-content" class="skip-nav">Перейти до основного вмісту</a>
+    
+    <div id="advanced-preloader" role="dialog" aria-labelledby="preloader-title">
+        <div>Loading INNER GARDEN...</div>
+    </div>
+
+    <div class="main-content" id="main-content">
+        <header class="header-section" id="header">
+            <div class="section-content">
+                <nav class="desktop-nav desktop-only" aria-label="Головна навігація">
+                    <div class="nav-brand">
+                        <h1>INNER GARDEN</h1>
+                        <p>Марина Камінська</p>
+                    </div>
+                    
+                    <ul class="nav-links">
+                        <li><a href="#gallery" class="nav-link">Галерея</a></li>
+                        <li><a href="#interactive-wall" class="nav-link">Інтерактивна стіна</a></li>
+                        <li><a href="#virtual-tour" class="nav-link">3D Тур</a></li>
+                        <li><a href="#timeline" class="nav-link">Події</a></li>
+                        <li><a href="#tickets" class="nav-link">Квитки</a></li>
+                        <li><a href="#artist" class="nav-link">Художниця</a></li>
+                    </ul>
+                    
+                    <div class="nav-controls">
+                        <button class="nav-btn" id="theme-toggle" aria-label="Перемкнути тему">
+                            <span aria-hidden="true">🌓</span>
+                        </button>
+                        <button class="nav-btn" id="sound-toggle" aria-label="Перемкнути звук">
+                            <span aria-hidden="true">🎧</span>
+                        </button>
+                        <div class="language-selector"></div>
+                    </div>
+                </nav>
+                
+                <nav class="mobile-nav mobile-only" aria-label="Мобільна навігація">
+                    <div class="mobile-nav-header">
+                        <h1 class="mobile-nav-title">INNER GARDEN</h1>
+                        <button class="mobile-menu-toggle" aria-label="Відкрити меню">
+                            <span class="hamburger-icon">☰</span>
+                        </button>
+                    </div>
+                    
+                    <div class="mobile-nav-menu hidden">
+                        <ul class="mobile-nav-links">
+                            <li><a href="#gallery" class="mobile-nav-link">Галерея</a></li>
+                            <li><a href="#interactive-wall" class="mobile-nav-link">Інтерактивна стіна</a></li>
+                            <li><a href="#virtual-tour" class="mobile-nav-link">3D Тур</a></li>
+                            <li><a href="#timeline" class="mobile-nav-link">Події</a></li>
+                            <li><a href="#tickets" class="mobile-nav-link">Квитки</a></li>
+                            <li><a href="#artist" class="mobile-nav-link">Художниця</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <section class="section accent-section" id="hero" aria-labelledby="hero-title">
+            <div class="section-header">
+                <h2 class="section-title split-text" id="hero-title">Відкрийте свій внутрішній сад</h2>
+                <p class="section-subtitle">Інтерактивна подорож у світ емоцій, спогадів та мрій через мистецтво Марини Камінської</p>
+            </div>
+            
+            <div class="section-content">
+                <div class="hero-content">
+                    <div class="hero-info">
+                        <div class="exhibition-details">
+                            <div class="detail-item">
+                                <span class="detail-icon" aria-hidden="true">📅</span>
+                                <div class="detail-content">
+                                    <h3>Дати виставки</h3>
+                                    <p>15 травня — 30 червня 2025</p>
+                                </div>
+                            </div>
+                            
+                            <div class="detail-item">
+                                <span class="detail-icon" aria-hidden="true">📍</span>
+                                <div class="detail-content">
+                                    <h3>Місце проведення</h3>
+                                    <p>Арт-Простір, Київ</p>
+                                </div>
+                            </div>
+                            
+                            <div class="detail-item">
+                                <span class="detail-icon" aria-hidden="true">🎟️</span>
+                                <div class="detail-content">
+                                    <h3>Квитки</h3>
+                                    <p>від 150 грн</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="hero-actions">
+                            <a href="#tickets" class="btn btn-primary">Отримати квиток</a>
+                            <button class="btn btn-outline" id="start-virtual-tour">Віртуальний тур</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="gallery" aria-labelledby="gallery-title">
+            <div class="section-header">
+                <h2 class="section-title split-text" id="gallery-title">Інтерактивна Галерея</h2>
+                <p class="section-subtitle">Дослідіть роботи художниці через інтерактивний досвід</p>
+            </div>
+            
+            <div class="section-content">
+                <div class="gallery-filters" role="tablist" aria-label="Фільтри галереї">
+                    <button class="gallery-filter active" role="tab" aria-selected="true" data-filter="all">Усі роботи</button>
+                    <button class="gallery-filter" role="tab" aria-selected="false" data-filter="nature">Природа</button>
+                    <button class="gallery-filter" role="tab" aria-selected="false" data-filter="emotions">Емоції</button>
+                    <button class="gallery-filter" role="tab" aria-selected="false" data-filter="dreams">Сни</button>
+                    <button class="gallery-filter" role="tab" aria-selected="false" data-filter="memories">Спогади</button>
+                </div>
+                
+                <div class="gallery-container" role="tabpanel" aria-label="Галерея робіт">
+                    <div class="gallery-grid">
+                        </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section dark-section" id="interactive-wall" aria-labelledby="wall-title">
+            <div class="section-header">
+                <h2 class="section-title" id="wall-title">Інтерактивна Стіна</h2>
+                <p class="section-subtitle">Залиште свій слід у нашому спільному внутрішньому саду</p>
+            </div>
+            
+            <div class="section-content">
+                <div class="wall-container" id="interactive-wall-canvas">
+                    </div>
+            </div>
+        </section>
+
+        <section class="section" id="virtual-tour" aria-labelledby="tour-title">
+            <div class="section-header">
+                <h2 class="section-title" id="tour-title">3D Віртуальний Тур</h2>
+                <p class="section-subtitle">Досліджуйте виставку у віртуальному просторі</p>
+            </div>
+            
+            <div class="section-content">
+                </div>
+        </section>
+
+        <section class="section" id="timeline" aria-labelledby="timeline-title">
+            <div class="section-header">
+                <h2 class="section-title" id="timeline-title">Події виставки</h2>
+                <p class="section-subtitle">Розклад воркшопів, лекцій та спеціальних заходів</p>
+            </div>
+            
+            <div class="section-content">
+                <div class="timeline-container">
+                    <div class="timeline-line" aria-hidden="true"></div>
+                    <div class="timeline-event">
+                        <div class="event-date">15 травня</div>
+                        <div class="event-content">
+                            <h3 class="event-title">Урочисте відкриття</h3>
+                            <p class="event-description">Зустріч з художницею та перший показ експозиції</p>
+                            <button class="btn btn-primary event-btn">Детальніше</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section accent-section" id="tickets" aria-labelledby="tickets-title">
+            <div class="section-header">
+                <h2 class="section-title" id="tickets-title">Квитки та відвідування</h2>
+                <p class="section-subtitle">Оберіть свій досвід відвідування виставки</p>
+            </div>
+            
+            <div class="section-content">
+                <div class="tickets-grid">
+                    </div>
+            </div>
+        </section>
+
+        <section class="section" id="artist" aria-labelledby="artist-title">
+            <div class="section-header">
+                <h2 class="section-title" id="artist-title">Про художницю</h2>
+                <p class="section-subtitle">Марина Камінська — дослідниця внутрішніх світів</p>
+            </div>
+            
+            <div class="section-content">
+                <div class="artist-profile">
+                    <div class="artist-info">
+                        <h3 class="artist-name">Марина Камінська</h3>
+                        <p class="artist-bio">
+                            Сучасна українська художниця, чия творчість поєднує традиційні техніки з новітніми медіа-технологіями. Спеціалізується на створенні інтерактивних інсталяцій, що досліджують глибини людської психіки.
+                        </p>
+                        
+                        <blockquote class="artist-quote">
+                            "Мистецтво — це міст між зовнішнім і внутрішнім світом. Через 'Inner Garden' я запрошую людей дослідити власний внутрішній простір і знайти зв'язки з внутрішніми світами інших."
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section dark-section" id="support" aria-labelledby="support-title">
+            <div class="section-header">
+                <h2 class="section-title" id="support-title">Підтримайте проект</h2>
+                <p class="section-subtitle">Ваша підтримка допоможе розвивати інтерактивне мистецтво</p>
+            </div>
+            
+            <div class="section-content">
+                <div class="support-tiers">
+                    <div class="support-card">
+                        <h3>Друг галереї</h3>
+                        <p class="support-amount">50 UAH</p>
+                        <button class="btn btn-primary support-btn" data-tier="friend">Підтримати</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="section dark-section">
+        <div class="section-content">
+            <div class="footer-bottom">
+                <p>&copy; 2025 Inner Garden. Марина Камінська. Усі права захищені.</p>
+                <div class="footer-legal">
+                    <a href="#" onclick="window.showPrivacy?.(); return false;">Приватність</a>
+                    <a href="#" onclick="window.showTerms?.(); return false;">Умови</a>
+                    <a href="#" onclick="window.showCookies?.(); return false;">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="accessibility-panel">
+        <button class="accessibility-toggle" aria-label="Налаштування доступності">
+            <span aria-hidden="true">♿</span>
+        </button>
+        <div class="accessibility-menu hidden" role="menu" aria-labelledby="accessibility-menu-title">
+            <h3 id="accessibility-menu-title">Доступність</h3>
+            <button class="accessibility-option" role="menuitem" data-action="font-size">
+                <span aria-hidden="true">🔤</span>
+                <span>Збільшити текст</span>
+            </button>
+            <button class="accessibility-option" role="menuitem" data-action="contrast">
+                <span aria-hidden="true">⚫</span>
+                <span>Високий контраст</span>
+            </button>
+            <button class="accessibility-option" role="menuitem" data-action="animations">
+                <span aria-hidden="true">⏸️</span>
+                <span>Вимкнути анімації</span>
+            </button>
+        </div>
+    </div>
+
+    <script type="module">
+        // Import all modules
+        import { CONFIG } from './config.js';
+        import Utils from './utils.js'; // Без фігурних дужок {}
+        import { TRANSLATIONS } from './translations.js';
+        import { LanguageManager } from './language-manager.js';
+        import { SoundManager } from './sound-manager.js';
+        import { AdvancedCursor } from './cursor-system.js';
+        import { AdvancedPreloader } from './preloader.js';
+        import { AdvancedInteractiveWall } from './interactive-wall.js';
+        import { Virtual3DTour } from './virtual-tour.js';
+        import { PopupSystem } from './popup-system.js';
+        import { GalleryManager } from './gallery.js';
+        import { TicketManager } from './tickets.js';
+        import InnerGardenApp from './app.js';
+
+        // Initialize the app
+        console.log('Initializing INNER GARDEN...');
+        
+        // The app will auto-initialize from app.js
+    </script>
+</body>
+</html>
