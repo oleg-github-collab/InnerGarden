@@ -44,9 +44,7 @@
 <body>
     <a href="#main-content" class="skip-nav">Перейти до основного вмісту</a>
     
-    <div id="advanced-preloader" role="dialog" aria-labelledby="preloader-title">
-        <div>Loading INNER GARDEN...</div>
-    </div>
+
 
     <div class="main-content" id="main-content">
         <header class="header-section" id="header">
@@ -58,12 +56,12 @@
                     </div>
                     
                     <ul class="nav-links">
-                        <li><a href="#gallery" class="nav-link">Галерея</a></li>
-                        <li><a href="#interactive-wall" class="nav-link">Інтерактивна стіна</a></li>
-                        <li><a href="#virtual-tour" class="nav-link">3D Тур</a></li>
-                        <li><a href="#timeline" class="nav-link">Події</a></li>
-                        <li><a href="#tickets" class="nav-link">Квитки</a></li>
-                        <li><a href="#artist" class="nav-link">Художниця</a></li>
+                        <li><a href="#gallery" class="nav-link" data-translate="nav.gallery">Галерея</a></li>
+                        <li><a href="#interactive-wall" class="nav-link" data-translate="nav.interactiveWall">Інтерактивна стіна</a></li>
+                        <li><a href="#virtual-tour" class="nav-link" data-translate="nav.virtualTour">3D Тур</a></li>
+                        <li><a href="#timeline" class="nav-link" data-translate="nav.events">Події</a></li>
+                        <li><a href="#tickets" class="nav-link" data-translate="nav.tickets">Квитки</a></li>
+                        <li><a href="#artist" class="nav-link" data-translate="nav.artist">Художниця</a></li>
                     </ul>
                     
                     <div class="nav-controls">
@@ -87,12 +85,12 @@
                     
                     <div class="mobile-nav-menu hidden">
                         <ul class="mobile-nav-links">
-                            <li><a href="#gallery" class="mobile-nav-link">Галерея</a></li>
-                            <li><a href="#interactive-wall" class="mobile-nav-link">Інтерактивна стіна</a></li>
-                            <li><a href="#virtual-tour" class="mobile-nav-link">3D Тур</a></li>
-                            <li><a href="#timeline" class="mobile-nav-link">Події</a></li>
-                            <li><a href="#tickets" class="mobile-nav-link">Квитки</a></li>
-                            <li><a href="#artist" class="mobile-nav-link">Художниця</a></li>
+                            <li><a href="#gallery" class="mobile-nav-link" data-translate="nav.gallery">Галерея</a></li>
+                            <li><a href="#interactive-wall" class="mobile-nav-link" data-translate="nav.interactiveWall">Інтерактивна стіна</a></li>
+                            <li><a href="#virtual-tour" class="mobile-nav-link" data-translate="nav.virtualTour">3D Тур</a></li>
+                            <li><a href="#timeline" class="mobile-nav-link" data-translate="nav.events">Події</a></li>
+                            <li><a href="#tickets" class="mobile-nav-link" data-translate="nav.tickets">Квитки</a></li>
+                            <li><a href="#artist" class="mobile-nav-link" data-translate="nav.artist">Художниця</a></li>
                         </ul>
                     </div>
                 </nav>
@@ -101,8 +99,8 @@
 
         <section class="section accent-section" id="hero" aria-labelledby="hero-title">
             <div class="section-header">
-                <h2 class="section-title split-text" id="hero-title">Відкрийте свій внутрішній сад</h2>
-                <p class="section-subtitle">Інтерактивна подорож у світ емоцій, спогадів та мрій через мистецтво Марини Камінської</p>
+                <h2 class="section-title split-text" id="hero-title" data-translate="hero.title">Відкрийте свій внутрішній сад</h2>
+                <p class="section-subtitle" data-translate="hero.subtitle">Інтерактивна подорож у світ емоцій, спогадів та мрій через мистецтво Марини Камінської</p>
             </div>
             
             <div class="section-content">
@@ -112,31 +110,31 @@
                             <div class="detail-item">
                                 <span class="detail-icon" aria-hidden="true">📅</span>
                                 <div class="detail-content">
-                                    <h3>Дати виставки</h3>
-                                    <p>15 травня — 30 червня 2025</p>
+                                    <h3 data-translate="hero.details.dates">Дати виставки</h3>
+                                    <p data-translate="hero.details.datesValue">15 травня — 30 червня 2025</p>
                                 </div>
                             </div>
                             
                             <div class="detail-item">
                                 <span class="detail-icon" aria-hidden="true">📍</span>
                                 <div class="detail-content">
-                                    <h3>Місце проведення</h3>
-                                    <p>Арт-Простір, Київ</p>
+                                    <h3 data-translate="hero.details.location">Місце проведення</h3>
+                                    <p data-translate="hero.details.locationValue">Арт-Простір, Київ</p>
                                 </div>
                             </div>
                             
                             <div class="detail-item">
                                 <span class="detail-icon" aria-hidden="true">🎟️</span>
                                 <div class="detail-content">
-                                    <h3>Квитки</h3>
-                                    <p>від 150 грн</p>
+                                    <h3 data-translate="hero.details.tickets">Квитки</h3>
+                                    <p data-translate="hero.details.ticketsValue">від 150 грн</p>
                                 </div>
                             </div>
                         </div>
                         
                         <div class="hero-actions">
-                            <a href="#tickets" class="btn btn-primary">Отримати квиток</a>
-                            <button class="btn btn-outline" id="start-virtual-tour">Віртуальний тур</button>
+                            <a href="#tickets" class="btn btn-primary" data-translate="hero.actions.getTicket">Отримати квиток</a>
+                            <button class="btn btn-outline" id="start-virtual-tour" data-translate="hero.actions.virtualTour">Віртуальний тур</button>
                         </div>
                     </div>
                 </div>
@@ -145,17 +143,17 @@
 
         <section class="section" id="gallery" aria-labelledby="gallery-title">
             <div class="section-header">
-                <h2 class="section-title split-text" id="gallery-title">Інтерактивна Галерея</h2>
-                <p class="section-subtitle">Дослідіть роботи художниці через інтерактивний досвід</p>
+                <h2 class="section-title split-text" id="gallery-title" data-translate="gallery.title">Інтерактивна Галерея</h2>
+                <p class="section-subtitle" data-translate="gallery.subtitle">Дослідіть роботи художниці через інтерактивний досвід</p>
             </div>
             
             <div class="section-content">
                 <div class="gallery-filters" role="tablist" aria-label="Фільтри галереї">
-                    <button class="gallery-filter active" role="tab" aria-selected="true" data-filter="all">Усі роботи</button>
-                    <button class="gallery-filter" role="tab" aria-selected="false" data-filter="nature">Природа</button>
-                    <button class="gallery-filter" role="tab" aria-selected="false" data-filter="emotions">Емоції</button>
-                    <button class="gallery-filter" role="tab" aria-selected="false" data-filter="dreams">Сни</button>
-                    <button class="gallery-filter" role="tab" aria-selected="false" data-filter="memories">Спогади</button>
+                    <button class="gallery-filter active" role="tab" aria-selected="true" data-filter="all" data-translate="gallery.filters.all">Усі роботи</button>
+                    <button class="gallery-filter" role="tab" aria-selected="false" data-filter="nature" data-translate="gallery.filters.nature">Природа</button>
+                    <button class="gallery-filter" role="tab" aria-selected="false" data-filter="emotions" data-translate="gallery.filters.emotions">Емоції</button>
+                    <button class="gallery-filter" role="tab" aria-selected="false" data-filter="dreams" data-translate="gallery.filters.dreams">Сни</button>
+                    <button class="gallery-filter" role="tab" aria-selected="false" data-filter="memories" data-translate="gallery.filters.memories">Спогади</button>
                 </div>
                 
                 <div class="gallery-container" role="tabpanel" aria-label="Галерея робіт">
@@ -167,8 +165,8 @@
 
         <section class="section dark-section" id="interactive-wall" aria-labelledby="wall-title">
             <div class="section-header">
-                <h2 class="section-title" id="wall-title">Інтерактивна Стіна</h2>
-                <p class="section-subtitle">Залиште свій слід у нашому спільному внутрішньому саду</p>
+                <h2 class="section-title" id="wall-title" data-translate="interactiveWall.title">Інтерактивна Стіна</h2>
+                <p class="section-subtitle" data-translate="interactiveWall.subtitle">Залиште свій слід у нашому спільному внутрішньому саду</p>
             </div>
             
             <div class="section-content">
@@ -179,8 +177,8 @@
 
         <section class="section" id="virtual-tour" aria-labelledby="tour-title">
             <div class="section-header">
-                <h2 class="section-title" id="tour-title">3D Віртуальний Тур</h2>
-                <p class="section-subtitle">Досліджуйте виставку у віртуальному просторі</p>
+                <h2 class="section-title" id="tour-title" data-translate="virtualTour">3D Віртуальний Тур</h2>
+                <p class="section-subtitle" data-translate="virtualExperience">Досліджуйте виставку у віртуальному просторі</p>
             </div>
             
             <div class="section-content">
@@ -189,8 +187,8 @@
 
         <section class="section" id="timeline" aria-labelledby="timeline-title">
             <div class="section-header">
-                <h2 class="section-title" id="timeline-title">Події виставки</h2>
-                <p class="section-subtitle">Розклад воркшопів, лекцій та спеціальних заходів</p>
+                <h2 class="section-title" id="timeline-title" data-translate="timeline.title">Події виставки</h2>
+                <p class="section-subtitle" data-translate="timeline.subtitle">Розклад воркшопів, лекцій та спеціальних заходів</p>
             </div>
             
             <div class="section-content">
@@ -210,8 +208,8 @@
 
         <section class="section accent-section" id="tickets" aria-labelledby="tickets-title">
             <div class="section-header">
-                <h2 class="section-title" id="tickets-title">Квитки та відвідування</h2>
-                <p class="section-subtitle">Оберіть свій досвід відвідування виставки</p>
+                <h2 class="section-title" id="tickets-title" data-translate="tickets.title">Квитки та відвідування</h2>
+                <p class="section-subtitle" data-translate="tickets.subtitle">Оберіть свій досвід відвідування виставки</p>
             </div>
             
             <div class="section-content">
@@ -222,8 +220,8 @@
 
         <section class="section" id="artist" aria-labelledby="artist-title">
             <div class="section-header">
-                <h2 class="section-title" id="artist-title">Про художницю</h2>
-                <p class="section-subtitle">Марина Камінська — дослідниця внутрішніх світів</p>
+                <h2 class="section-title" id="artist-title" data-translate="artist.title">Про художницю</h2>
+                <p class="section-subtitle" data-translate="artist.subtitle">Марина Камінська — дослідниця внутрішніх світів</p>
             </div>
             
             <div class="section-content">
