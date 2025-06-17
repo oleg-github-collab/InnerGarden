@@ -627,7 +627,7 @@ export class InnerGardenApp {
             clearTimeout(resizeTimeout);
             resizeTimeout = setTimeout(() => {
                 // Update mobile/desktop state
-                const isMobile = Utils.isMobile();
+                const isMobile = Utils.Device.isMobile();
                 
                 if (isMobile && this.modules.cursor) {
                     this.modules.cursor.destroy();

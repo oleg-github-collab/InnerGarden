@@ -1204,7 +1204,7 @@
         }
 
         init() {
-            if (Utils.isMobile()) return;
+            if (Utils.Device.isMobile()) return;
             
             this.createCursorElements();
             this.bindEvents();
@@ -2371,7 +2371,7 @@
                 mood: this.container.querySelector('#message-mood')?.value || 'joyful',
                 text: this.container.querySelector('#message-text')?.value || '',
                 timestamp: Date.now(),
-                id: Utils.generateId()
+                id: Utils.StringUtils.generateId()
             };
         }
 
@@ -2911,7 +2911,7 @@
                     this.createMessage({
                         ...msg,
                         timestamp: Date.now() - Math.random() * 3600000,
-                        id: Utils.generateId()
+                        id: Utils.StringUtils.generateId()
                     });
                 }, index * 1000);
             });
@@ -3475,7 +3475,7 @@
             const animateTransition = () => {
                 const elapsed = Date.now() - startTime;
                 const progress = Math.min(elapsed / duration, 1);
-                const easedProgress = Utils.easeInOutCubic(progress);
+                const easedProgress = Utils.Easing.easeInOutCubic(progress);
 
                 this.camera.position.lerpVectors(startPosition, targetPosition, easedProgress);
 
@@ -4044,7 +4044,7 @@
 
         createPopup(options) {
             const popup = {
-                id: Utils.generateId(),
+                id: Utils.StringUtils.generateId(),
                 element: null,
                 options: options
             };
@@ -4928,7 +4928,7 @@
         }
 
         showTicketSuccess(ticket, formData) {
-            const ticketId = Utils.generateId().toUpperCase();
+            const ticketId = Utils.StringUtils.generateId().toUpperCase();
             
             this.modules.popupSystem.show({
                 title: 'Payment Successful!',
@@ -5415,7 +5415,7 @@
                 clearTimeout(resizeTimeout);
                 resizeTimeout = setTimeout(() => {
                     // Update mobile/desktop state
-                    const isMobile = Utils.isMobile();
+                    const isMobile = Utils.Device.isMobile();
                     
                     if (isMobile && this.modules.cursor) {
                         this.modules.cursor.destroy();
