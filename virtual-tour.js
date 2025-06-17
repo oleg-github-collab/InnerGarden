@@ -461,7 +461,7 @@ export class Virtual3DTour {
         const animateTransition = () => {
             const elapsed = Date.now() - startTime;
             const progress = Math.min(elapsed / duration, 1);
-            const easedProgress = Utils.easeInOutCubic(progress);
+            const easedProgress = Utils.Easing.easeInOutCubic(progress);
 
             this.camera.position.lerpVectors(startPosition, targetPosition, easedProgress);
 

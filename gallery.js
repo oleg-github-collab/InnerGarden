@@ -42,7 +42,7 @@ export class GalleryManager {
 
         this.artworks = categories.flatMap((category, catIndex) => 
             titles[category].map((title, index) => ({
-                id: Utils.generateId(),
+                id: Utils.StringUtils.generateId(),
                 title: title,
                 artist: 'Marina Kaminska',
                 category: category,
@@ -85,7 +85,7 @@ export class GalleryManager {
     }
 
     getRandomPrice() {
-        const basePrice = Utils.getRandomInt(5000, 50000);
+        const basePrice = Utils.MathUtils.getRandomInt(5000, 50000);
         return Math.floor(basePrice / 100) * 100;
     }
 
@@ -147,7 +147,7 @@ export class GalleryManager {
                 <h3 class="artwork-title">${artwork.title}</h3>
                 <p class="artwork-medium">${artwork.medium}</p>
                 <p class="artwork-dimensions">${artwork.dimensions}</p>
-                <p class="artwork-price">${Utils.formatCurrency(artwork.price, 'UAH')}</p>
+                <p class="artwork-price">${Utils.NumberUtils.formatCurrency(artwork.price, 'UAH')}</p>
             </div>
         `;
 
@@ -262,7 +262,7 @@ export class GalleryManager {
                         <div>
                             <h4 style="color: #7f8c8d; font-size: 0.9rem; margin-bottom: 0.5rem;">Price</h4>
                             <p style="font-weight: 600; color: #e67e22; font-size: 1.2rem;">
-                                ${artwork.sold ? 'SOLD' : Utils.formatCurrency(artwork.price, 'UAH')}
+                                ${artwork.sold ? 'SOLD' : Utils.NumberUtils.formatCurrency(artwork.price, 'UAH')}
                             </p>
                         </div>
                     </div>

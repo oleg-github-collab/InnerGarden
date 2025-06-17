@@ -667,7 +667,7 @@ export class TicketManager {
         if (!ticket) return;
         
         this.cart.push({
-            id: Utils.generateId(),
+            id: Utils.StringUtils.generateId(),
             type: ticketType,
             ticket: ticket,
             quantity: 1,

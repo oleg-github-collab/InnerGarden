@@ -263,7 +263,7 @@ export class PopupSystem {
 
     createPopup(options) {
         const popup = {
-            id: Utils.generateId(),
+            id: Utils.StringUtils.generateId(),
             element: null,
             options: options
         };
