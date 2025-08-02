@@ -18,8 +18,9 @@ const translations = {
         'scroll-text': 'Прокрутіть вниз',
         'about-title': 'Про Inner Garden',
         'about-text-1': 'Inner Garden - це художня виставка Марини Камінської, яка відбудеться в галереї Bloom у Валенсії, Іспанія, і запрошує вас з 15 по 29 серпня 2025 року.',
-        'about-text-2': 'Вас запрошують дослідити найновішу серію робіт Камінської, які втілюють ідею недвоїстості світу. Ця виставка показує, як усе навколо вас може формувати ваш внутрішній світ - і як ваш внутрішній світ, у свою чергу, може формувати те, що ви бачите і відчуваєте зовні.',
-        'about-text-3': 'Inner Garden заохочує вас практикувати інтероцепцію: усвідомлене дослідження власного внутрішнього ландшафту. Думайте про це як про сад - ваш сад - який потребує посіву, догляду, прополювання та збору врожаю. Ці культивовані моменти стосуються ваших почуттів, думок, переконань, мрій, фантазій та цінностей.',
+        'about-text-2': 'Ця виставка запрошує нас поміркувати: як ми культивуємо наш внутрішній світ?',
+        'about-text-3': 'Роботи Камінської проводять потужний зв\'язок між природним світом і нашими внутрішніми ландшафтами. Зовнішня природа, що нас оточує, відображається всередині нас — променева енергія сонця — це та сама енергія, що циркулює через наше єство, оживляючи нас ритмом життя. Це світлоносна сила, яка трансформується і тече через любов, свободу та присутність. Ця енергія рухається колами вібрації та зв\'язку, живлена життєвим центром — місцем рівноваги та сили. Це сила, яка знову з\'єднує нас з нашою сутністю.',
+        'about-text-4': 'Виставка Inner Garden — це обійми життя, але також заклик плекати наш емоційний, ментальний і духовний простір — свідомо сіяти, доглядати та збирати наші думки, мрії та переконання. Це говорить про те, що наша внутрішня реальність формує наш зовнішній досвід. Все взаємопов\'язано, і так само, як еволюціонує природа, так повинні еволюціонувати і ми.',
         'about-quote': '"Усвідомлення нашого внутрішнього тілесного стану відіграє вирішальну роль у тому, як ми переживаємо те, ким ми є і що нас оточує, що одночасно є подихом природи на землі."',
         'read-more': 'Читати далі',
         'read-less': 'Згорнути',
@@ -119,8 +120,9 @@ const translations = {
         'scroll-text': 'Scroll down',
         'about-title': 'About Inner Garden',
         'about-text-1': 'Inner Garden is an art exhibition by Maryna Kaminska, taking place at Bloom Gallery in Valencia, Spain, inviting you from August 15 to 29, 2025.',
-        'about-text-2': 'You are invited to explore Kaminska\'s latest series of works that embody the idea of non-duality of the world. This exhibition shows how everything around you can shape your inner world - and how your inner world, in turn, can shape what you see and feel externally.',
-        'about-text-3': 'Inner Garden encourages you to practice interoception: a conscious exploration of your own inner landscape. Think of it as a garden - your garden - that needs sowing, tending, weeding, and harvesting. These cultivated moments relate to your feelings, thoughts, beliefs, dreams, fantasies, and values.',
+        'about-text-2': 'This exhibition invites us to reflect: how do we cultivate our inner world?',
+        'about-text-3': 'Kaminska\'s works draw a powerful connection between the natural world and our inner landscapes. The external nature that surrounds us is reflected within us—the radiant energy of the sun is the same energy that circulates through our being, animating us with the rhythm of life. It is a light-bearing force that transforms and flows through love, freedom, and presence. This energy moves in circles of vibration and connection, nourished by a vital center—a place of balance and strength. It is a force that reconnects us with our essence.',
+        'about-text-4': 'The Inner Garden exhibition is an embrace of life, but also a call to cultivate our emotional, mental, and spiritual space—to consciously sow, tend, and harvest our thoughts, dreams, and beliefs. It suggests that our inner reality shapes our outer experience. Everything is interconnected, and just as nature evolves, so must we.',
         'about-quote': '"Awareness of our inner bodily state plays a crucial role in how we experience who we are and what surrounds us, which is simultaneously nature\'s breath on earth."',
         'read-more': 'Read more',
         'read-less': 'Read less',
@@ -220,8 +222,9 @@ const translations = {
         'scroll-text': 'Nach unten scrollen',
         'about-title': 'Über Inner Garden',
         'about-text-1': 'Inner Garden ist eine Kunstausstellung von Maryna Kaminska in der Bloom Gallery in Valencia, Spanien, die Sie vom 15. bis 29. August 2025 einlädt.',
-        'about-text-2': 'Sie sind eingeladen, Kaminskas neueste Werkserie zu erkunden, die die Idee der Nicht-Dualität der Welt verkörpert. Diese Ausstellung zeigt, wie alles um Sie herum Ihre innere Welt formen kann - und wie Ihre innere Welt wiederum das formen kann, was Sie außen sehen und fühlen.',
-        'about-text-3': 'Inner Garden ermutigt Sie, Interozeption zu praktizieren: eine bewusste Erforschung Ihrer eigenen inneren Landschaft. Denken Sie daran als einen Garten - Ihren Garten - der Aussaat, Pflege, Jäten und Ernte benötigt. Diese kultivierten Momente beziehen sich auf Ihre Gefühle, Gedanken, Überzeugungen, Träume, Fantasien und Werte.',
+        'about-text-2': 'Diese Ausstellung lädt uns zum Nachdenken ein: Wie kultivieren wir unsere innere Welt?',
+        'about-text-3': 'Kaminskas Werke ziehen eine starke Verbindung zwischen der natürlichen Welt und unseren inneren Landschaften. Die äußere Natur, die uns umgibt, spiegelt sich in uns wider – die strahlende Energie der Sonne ist dieselbe Energie, die durch unser Wesen zirkuliert und uns mit dem Rhythmus des Lebens belebt. Es ist eine lichttragende Kraft, die sich durch Liebe, Freiheit und Präsenz verwandelt und fließt. Diese Energie bewegt sich in Kreisen der Schwingung und Verbindung, genährt von einem vitalen Zentrum – einem Ort des Gleichgewichts und der Stärke. Es ist eine Kraft, die uns wieder mit unserem Wesen verbindet.',
+        'about-text-4': 'Die Ausstellung "Inner Garden" ist eine Umarmung des Lebens, aber auch ein Aufruf, unseren emotionalen, mentalen und spirituellen Raum zu pflegen – unsere Gedanken, Träume und Überzeugungen bewusst zu säen, zu hegen und zu ernten. Sie legt nahe, dass unsere innere Realität unsere äußere Erfahrung formt. Alles ist miteinander verbunden, und so wie sich die Natur entwickelt, müssen auch wir uns entwickeln.',
         'about-quote': '"Das Bewusstsein für unseren inneren körperlichen Zustand spielt eine entscheidende Rolle dafür, wie wir erleben, wer wir sind und was uns umgibt, was gleichzeitig der Atem der Natur auf der Erde ist."',
         'read-more': 'Weiterlesen',
         'read-less': 'Weniger lesen',
@@ -321,8 +324,9 @@ const translations = {
         'scroll-text': 'Desplázate hacia abajo',
         'about-title': 'Sobre Inner Garden',
         'about-text-1': 'Inner Garden es una exposición de arte de Maryna Kaminska en la Galería Bloom en Valencia, España, que te invita del 15 al 29 de agosto de 2025.',
-        'about-text-2': 'Estás invitado a explorar la última serie de obras de Kaminska, que encarnan la idea de la no dualidad del mundo. Esta exposición muestra cómo todo lo que te rodea puede dar forma a tu mundo interior - y cómo tu mundo interior, a su vez, puede dar forma a lo que ves y sientes externamente.',
-        'about-text-3': 'Inner Garden te anima a practicar la interocepción: una exploración consciente de tu propio paisaje interior. Piensa en ello como un jardín - tu jardín - que necesita siembra, cuidado, deshierbe y cosecha. Estos momentos cultivados se relacionan con tus sentimientos, pensamientos, creencias, sueños, fantasías y valores.',
+        'about-text-2': 'Esta exposición nos invita a reflexionar: ¿cómo cultivamos nuestro mundo interior?',
+        'about-text-3': 'Las obras de Kaminska trazan una poderosa conexión entre el mundo natural y nuestros paisajes interiores. La naturaleza externa que nos rodea se refleja en nuestro interior: la energía radiante del sol es la misma energía que circula a través de nuestro ser, animándonos con el ritmo de la vida. Es una fuerza portadora de luz que se transforma y fluye a través del amor, la libertad y la presencia. Esta energía se mueve en círculos de vibración y conexión, nutrida por un centro vital, un lugar de equilibrio y fortaleza. Es una fuerza que nos reconecta con nuestra esencia.',
+        'about-text-4': 'La exposición "Inner Garden" es un abrazo a la vida, pero también un llamado a cultivar nuestro espacio emocional, mental y espiritual: a sembrar, cuidar y cosechar conscientemente nuestros pensamientos, sueños y creencias. Sugiere que nuestra realidad interna da forma a nuestra experiencia externa. Todo está interconectado, y así como la naturaleza evoluciona, también debemos hacerlo nosotros.',
         'about-quote': '"La conciencia de nuestro estado corporal interno juega un papel crucial en cómo experimentamos quiénes somos y qué nos rodea, que al mismo tiempo es el aliento de la naturaleza en la tierra."',
         'read-more': 'Leer más',
         'read-less': 'Leer menos',
@@ -462,25 +466,25 @@ const nftItems = [
 const physicalItems = [
     {
         id: 'phys1',
-        price: '€2,500',
+        price: '€585',
         image: 'https://res.cloudinary.com/djdc6wcpg/image/upload/v1752772827/24_k2msrg.jpg',
         shopLink: 'https://www.artkaminska.com/product-page/vibrations'
     },
     {
         id: 'phys2',
-        price: '€3,200',
+        price: '€339',
         image: 'https://res.cloudinary.com/djdc6wcpg/image/upload/v1745600703/hgkmrbvhftcldykixrlp.jpg',
         shopLink: 'https://www.artkaminska.com/product-page/in-my-inner-garden'
     },
     {
         id: 'phys3',
-        price: '€2,800',
+        price: '€339',
         image: 'https://res.cloudinary.com/djdc6wcpg/image/upload/v1745600746/at6yuwanlntwhaihznlw.jpg',
         shopLink: 'https://www.artkaminska.com/product-page/infatuation'
     },
     {
         id: 'phys4',
-        price: '€3,500',
+        price: '€585',
         image: 'https://res.cloudinary.com/djdc6wcpg/image/upload/v1752772891/25_mkcl0g.jpg',
         shopLink: 'https://www.artkaminska.com/product-page/the-pulse-of-earth'
     }
@@ -1878,6 +1882,111 @@ function initializeGarden() {
 }
 
 // Shop functionality (Fixed carousel)
+// Shop functionality (Fixed carousel)
+
+// Спочатку виносимо функції в глобальну область видимості
+function renderShopItems() {
+    const shopItemsContainer = document.getElementById('shopItems');
+    if (!shopItemsContainer) return;
+
+    shopItemsContainer.innerHTML = '';
+    const items = currentShopTab === 'nft' ? nftItems : physicalItems;
+
+    items.forEach((item) => {
+        const itemElement = document.createElement('div');
+        itemElement.className = 'shop-item';
+
+        const titleKey = `${item.id}-title`;
+        const title = translations[currentLang][titleKey] || item.title || '';
+
+        const descriptionKey = `${item.id}-desc`;
+        const description = translations[currentLang][descriptionKey] || '';
+
+        if (currentShopTab === 'nft') {
+            itemElement.innerHTML = `
+                <div class="shop-item-image">
+                    <img src="${item.image}" alt="${title}" loading="lazy">
+                    <div class="shop-item-overlay"><span class="nft-badge">NFT</span></div>
+                </div>
+                <div class="shop-item-content">
+                    <h3>${title}</h3>
+                    <div class="shop-item-price">${item.price}</div>
+                    <p class="shop-item-description">${description}</p>
+                    <div class="shop-item-buttons">
+                        <a href="${item.getgemsLink}" class="btn btn-primary" target="_blank" rel="noopener">
+                            <i class="fas fa-shopping-cart"></i> <span data-translate="shop-buy">${translations[currentLang]['shop-buy']}</span>
+                        </a>
+                        <a href="${item.telegramLink}" class="btn btn-outline" target="_blank" rel="noopener">
+                            <i class="fab fa-telegram"></i> <span data-translate="shop-gift">${translations[currentLang]['shop-gift']}</span>
+                        </a>
+                    </div>
+                </div>`;
+        } else {
+            itemElement.innerHTML = `
+                <div class="shop-item-image">
+                    <img src="${item.image}" alt="${title}" loading="lazy">
+                </div>
+                <div class="shop-item-content">
+                    <h3>${title}</h3>
+                    <div class="shop-item-price">${item.price}</div>
+                    <p class="shop-item-description">${description}</p>
+                    <div class="shop-item-buttons">
+                        <a href="${item.shopLink}" class="btn btn-primary" target="_blank" rel="noopener">
+                            <i class="fas fa-shopping-cart"></i> <span data-translate="shop-buy-physical">${translations[currentLang]['shop-buy-physical']}</span>
+                        </a>
+                    </div>
+                </div>`;
+        }
+        shopItemsContainer.appendChild(itemElement);
+    });
+
+    // Trigger carousel update
+    const updateCarouselEvent = new Event('resize');
+    window.dispatchEvent(updateCarouselEvent);
+}
+
+function updateCarousel() {
+    const shopItemsContainer = document.getElementById('shopItems');
+    const items = shopItemsContainer.querySelectorAll('.shop-item');
+    if (items.length === 0) return;
+
+    const itemWidth = items[0].offsetWidth;
+    const gap = parseInt(getComputedStyle(shopItemsContainer).gap) || 32;
+    const scrollAmount = (itemWidth + gap) * currentShopIndex;
+
+    shopItemsContainer.style.transform = `translateX(-${scrollAmount}px)`;
+
+    const currentItems = currentShopTab === 'nft' ? nftItems : physicalItems;
+    const maxIndex = Math.max(0, currentItems.length - shopItemsPerView);
+
+    const shopPrev = document.getElementById('shopPrev');
+    const shopNext = document.getElementById('shopNext');
+
+    if (shopPrev) {
+        shopPrev.style.opacity = currentShopIndex === 0 ? '0.3' : '1';
+        shopPrev.disabled = currentShopIndex === 0;
+    }
+    if (shopNext) {
+        shopNext.style.opacity = currentShopIndex >= maxIndex ? '0.3' : '1';
+        shopNext.disabled = currentShopIndex >= maxIndex;
+    }
+}
+
+function calculateItemsPerView() {
+    const shopItemsContainer = document.getElementById('shopItems');
+    if (!shopItemsContainer || !shopItemsContainer.parentElement) return;
+
+    const containerWidth = shopItemsContainer.parentElement.offsetWidth;
+    const itemWidth = 350; // Fixed width of shop items
+    const gap = 32; // Gap between items
+
+    if (window.innerWidth < 576) shopItemsPerView = 1;
+    else if (window.innerWidth < 768) shopItemsPerView = 2;
+    else if (window.innerWidth < 1200) shopItemsPerView = Math.floor(containerWidth / (itemWidth + gap));
+    else shopItemsPerView = Math.min(3, Math.floor(containerWidth / (itemWidth + gap)));
+}
+
+// Тепер функція initializeShop лише встановлює початкові налаштування та слухачі подій
 function initializeShop() {
     const shopItemsContainer = document.getElementById('shopItems');
     const shopPrev = document.getElementById('shopPrev');
@@ -1898,105 +2007,11 @@ function initializeShop() {
         });
     });
 
-    function calculateItemsPerView() {
-        const containerWidth = shopItemsContainer.parentElement.offsetWidth;
-        const itemWidth = 350; // Fixed width of shop items
-        const gap = 32; // Gap between items
-
-        if (window.innerWidth < 576) shopItemsPerView = 1;
-        else if (window.innerWidth < 768) shopItemsPerView = 2;
-        else if (window.innerWidth < 1200) shopItemsPerView = Math.floor(containerWidth / (itemWidth + gap));
-        else shopItemsPerView = Math.min(3, Math.floor(containerWidth / (itemWidth + gap)));
-    }
-
     calculateItemsPerView();
     window.addEventListener('resize', () => {
         calculateItemsPerView();
         updateCarousel();
     });
-
-    function renderShopItems() {
-        const shopItemsContainer = document.getElementById('shopItems');
-        if (!shopItemsContainer) return;
-
-        shopItemsContainer.innerHTML = '';
-        const items = currentShopTab === 'nft' ? nftItems : physicalItems;
-
-        items.forEach((item) => {
-            const itemElement = document.createElement('div');
-            itemElement.className = 'shop-item';
-
-            const titleKey = `${item.id}-title`;
-            const title = translations[currentLang][titleKey] || item.title || '';
-
-            const descriptionKey = `${item.id}-desc`;
-            const description = translations[currentLang][descriptionKey] || '';
-
-            if (currentShopTab === 'nft') {
-                itemElement.innerHTML = `
-                    <div class="shop-item-image">
-                        <img src="${item.image}" alt="${title}" loading="lazy">
-                        <div class="shop-item-overlay"><span class="nft-badge">NFT</span></div>
-                    </div>
-                    <div class="shop-item-content">
-                        <h3>${title}</h3>
-                        <div class="shop-item-price">${item.price}</div>
-                        <p class="shop-item-description">${description}</p>
-                        <div class="shop-item-buttons">
-                            <a href="${item.getgemsLink}" class="btn btn-primary" target="_blank" rel="noopener">
-                                <i class="fas fa-shopping-cart"></i> <span data-translate="shop-buy">${translations[currentLang]['shop-buy']}</span>
-                            </a>
-                            <a href="${item.telegramLink}" class="btn btn-outline" target="_blank" rel="noopener">
-                                <i class="fab fa-telegram"></i> <span data-translate="shop-gift">${translations[currentLang]['shop-gift']}</span>
-                            </a>
-                        </div>
-                    </div>`;
-            } else {
-                itemElement.innerHTML = `
-                    <div class="shop-item-image">
-                        <img src="${item.image}" alt="${title}" loading="lazy">
-                    </div>
-                    <div class="shop-item-content">
-                        <h3>${title}</h3>
-                        <div class="shop-item-price">${item.price}</div>
-                        <p class="shop-item-description">${description}</p>
-                        <div class="shop-item-buttons">
-                            <a href="${item.shopLink}" class="btn btn-primary" target="_blank" rel="noopener">
-                                <i class="fas fa-shopping-cart"></i> <span data-translate="shop-buy-physical">${translations[currentLang]['shop-buy-physical']}</span>
-                            </a>
-                        </div>
-                    </div>`;
-            }
-            shopItemsContainer.appendChild(itemElement);
-        });
-
-        // Trigger carousel update
-        const updateCarouselEvent = new Event('resize');
-        window.dispatchEvent(updateCarouselEvent);
-    }
-
-    function updateCarousel() {
-        const items = shopItemsContainer.querySelectorAll('.shop-item');
-        if (items.length === 0) return;
-
-        const itemWidth = items[0].offsetWidth;
-        const gap = parseInt(getComputedStyle(shopItemsContainer).gap) || 32;
-        const scrollAmount = (itemWidth + gap) * currentShopIndex;
-
-        shopItemsContainer.style.transform = `translateX(-${scrollAmount}px)`;
-
-        const currentItems = currentShopTab === 'nft' ? nftItems : physicalItems;
-        const maxIndex = Math.max(0, currentItems.length - shopItemsPerView);
-
-        if (shopPrev) {
-            shopPrev.style.opacity = currentShopIndex === 0 ? '0.3' : '1';
-            shopPrev.disabled = currentShopIndex === 0;
-        }
-        if (shopNext) {
-            shopNext.style.opacity = currentShopIndex >= maxIndex ? '0.3' : '1';
-            shopNext.disabled = currentShopIndex >= maxIndex;
-        }
-    }
 
     shopPrev?.addEventListener('click', () => {
         if (currentShopIndex > 0) {
@@ -2038,7 +2053,7 @@ function initializeShop() {
         }
     });
 
-    renderShopItems();
+    renderShopItems(); // Перший рендер при завантаженні
     updateCarousel();
 }
 
@@ -2114,7 +2129,10 @@ function initializeBackToTop() {
     });
 
     backToTop.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     });
 }
 
@@ -2188,7 +2206,7 @@ function lazyLoadImages() {
 
 // Smooth scrolling (optimized for mobile)
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
+    anchor.addEventListener('click', function(e) {
         e.preventDefault();
         const targetId = this.getAttribute('href');
         const target = document.querySelector(targetId);
@@ -2231,7 +2249,9 @@ if ('PerformanceObserver' in window) {
         }
     });
 
-    perfObserver.observe({ entryTypes: ['largest-contentful-paint'] });
+    perfObserver.observe({
+        entryTypes: ['largest-contentful-paint']
+    });
 }
 
 // Service Worker registration for PWA (optional)
