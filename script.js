@@ -424,21 +424,21 @@ const nftItems = [
     {
         id: 'nft1',
         price: '$15',
-        image: 'https://res.cloudinary.com/djdc6wcpg/image/upload/v1753481364/photo_2025-07-26_00.06.58_n1qlqm.jpg',
+        image: 'https://res.cloudinary.com/djdc6wcpg/image/upload/v1753481364/photo_2025-07-26_00.07.20_kgawra.jpg',
         getgemsLink: 'https://getgems.io/collection/EQDc_nhufA6VyScUH2gHqOoWWq5pJssZHiaJWQvWmq0RaT9O/EQCAXprM7lOqoVFmCewXLJyQ49KQGpjrl5tLwxZkhFyoy7UK',
         telegramLink: 'https://t.me/share/url?url=https://getgems.io/collection/EQDc_nhufA6VyScUH2gHqOoWWq5pJssZHiaJWQvWmq0RaT9O/EQCAXprM7lOqoVFmCewXLJyQ49KQGpjrl5tLwxZkhFyoy7UK&text=Gift%20you%20an%20NFT%20from%20Maryna%20Kaminska!'
     },
     {
         id: 'nft2',
         price: '$15',
-        image: 'https://res.cloudinary.com/djdc6wcpg/image/upload/v1753481364/photo_2025-07-26_00.07.20_kgawra.jpg',
+        image: 'https://res.cloudinary.com/djdc6wcpg/image/upload/v1753481365/photo_2025-07-26_00.07.24_la4i9c.jpg',
         getgemsLink: 'https://getgems.io/collection/EQDc_nhufA6VyScUH2gHqOoWWq5pJssZHiaJWQvWmq0RaT9O/EQBOQCQFlzfOSdQTzzLVYHLL_0_jxrJSxq-M9mwf4nKG0Yma',
         telegramLink: 'https://t.me/share/url?url=https://getgems.io/collection/EQDc_nhufA6VyScUH2gHqOoWWq5pJssZHiaJWQvWmq0RaT9O/EQBOQCQFlzfOSdQTzzLVYHLL_0_jxrJSxq-M9mwf4nKG0Yma&text=Gift%20you%20an%20NFT%20from%20Maryna%20Kaminska!'
     },
     {
         id: 'nft3',
         price: '$15',
-        image: 'https://res.cloudinary.com/djdc6wcpg/image/upload/v1753481366/photo_2025-07-26_00.07.35_dyp6dn.jpg',
+        image: 'https://res.cloudinary.com/djdc6wcpg/image/upload/v1753481365/photo_2025-07-26_00.07.28_zvl2iz.jpg',
         getgemsLink: 'https://getgems.io/collection/EQDc_nhufA6VyScUH2gHqOoWWq5pJssZHiaJWQvWmq0RaT9O/EQD0wEVrvAY4OT4YYNT3DY-Jbpzj1S71XPd45h8DQ4pnx7h9',
         telegramLink: 'https://t.me/share/url?url=https://getgems.io/collection/EQDc_nhufA6VyScUH2gHqOoWWq5pJssZHiaJWQvWmq0RaT9O/EQD0wEVrvAY4OT4YYNT3DY-Jbpzj1S71XPd45h8DQ4pnx7h9&text=Gift%20you%20an%20NFT%20from%20Maryna%20Kaminska!'
     },
@@ -452,7 +452,7 @@ const nftItems = [
     {
         id: 'nft5',
         price: '$15',
-        image: 'https://res.cloudinary.com/djdc6wcpg/image/upload/v1753481365/photo_2025-07-26_00.07.28_zvl2iz.jpg',
+        image: 'https://res.cloudinary.com/djdc6wcpg/image/upload/v1753481366/photo_2025-07-26_00.07.35_dyp6dn.jpg',
         getgemsLink: 'https://getgems.io/collection/EQDc_nhufA6VyScUH2gHqOoWWq5pJssZHiaJWQvWmq0RaT9O/EQCxchZYdLBuMcReM8RgZ4fQq2AVqtk98OF612CbJCBez52k',
         telegramLink: 'https://t.me/share/url?url=https://getgems.io/collection/EQDc_nhufA6VyScUH2gHqOoWWq5pJssZHiaJWQvWmq0RaT9O/EQCxchZYdLBuMcReM8RgZ4fQq2AVqtk98OF612CbJCBez52k&text=Gift%20you%20an%20NFT%20from%20Maryna%20Kaminska!'
     }
@@ -463,26 +463,26 @@ const physicalItems = [
     {
         id: 'phys1',
         price: '€2,500',
-        image: 'https://res.cloudinary.com/djdc6wcpg/image/upload/v1752772828/31_a7fjym.jpg',
+        image: 'https://res.cloudinary.com/djdc6wcpg/image/upload/v1752772827/24_k2msrg.jpg',
         shopLink: 'https://www.artkaminska.com/product-page/vibrations'
     },
     {
         id: 'phys2',
         price: '€3,200',
-        image: 'https://res.cloudinary.com/djdc6wcpg/image/upload/v1752772827/24_k2msrg.jpg',
+        image: 'https://res.cloudinary.com/djdc6wcpg/image/upload/v1745600703/hgkmrbvhftcldykixrlp.jpg',
         shopLink: 'https://www.artkaminska.com/product-page/in-my-inner-garden'
     },
     {
         id: 'phys3',
         price: '€2,800',
-        image: 'https://res.cloudinary.com/djdc6wcpg/image/upload/v1752772787/30_ybwkui.jpg',
+        image: 'https://res.cloudinary.com/djdc6wcpg/image/upload/v1745600746/at6yuwanlntwhaihznlw.jpg',
         shopLink: 'https://www.artkaminska.com/product-page/infatuation'
     },
     {
         id: 'phys4',
         price: '€3,500',
         image: 'https://res.cloudinary.com/djdc6wcpg/image/upload/v1752772891/25_mkcl0g.jpg',
-        shopLink: 'https://www.artkaminska.com/product-page/woman-to-woman'
+        shopLink: 'https://www.artkaminska.com/product-page/the-pulse-of-earth'
     }
 ];
 
