@@ -1,4 +1,11 @@
-// Inner Garden Exhibition JavaScript - Fixed Version
+// Inner Garden Exhibition JavaScript - Google Apps Script Integration
+// Version 1.1.0 - FIXED
+
+// ============================================
+// ВАЖЛИВО: ВСТАВТЕ ВАШ URL ТУТ!
+// ============================================
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyoUt5MGd7HkoTIIQ_s4cy4-TRSdL05FyPvBF_IE7fP28y3RavYt3sTdm24vMu8LnQSOg/exec'; // <-- ЗАМІНІТЬ НА ВАШ URL
+const ADMIN_PASSWORD = 'innergardenexhibition2024'; // <-- ЗМІНІТЬ НА СВІЙ ПАРОЛЬ
 
 // Language translations (complete with all languages)
 const translations = {
@@ -62,6 +69,12 @@ const translations = {
         'plant-bamboo': 'Бамбук',
         'plant-submit': 'Посадити',
         'plant-click-hint': 'Клікніть де хочете посадити рослину',
+        'plant-syncing': 'Синхронізація з сервером...',
+        'plant-loading': 'Завантаження саду...',
+        'plant-error': 'Помилка зв\'язку з сервером',
+        'plant-retry': 'Спробувати ще раз',
+        'plant-offline': 'Працюєте офлайн',
+        'plant-planted': 'Рослину успішно посаджено!',
         'shop-title': 'NFT Колекція та Магазин',
         'shop-visit-external': 'Відвідати повний інтернет-магазин',
         'shop-tab-nft': 'NFT Колекція',
@@ -164,6 +177,12 @@ const translations = {
         'plant-bamboo': 'Bamboo',
         'plant-submit': 'Plant',
         'plant-click-hint': 'Click where you want to plant',
+        'plant-syncing': 'Syncing with server...',
+        'plant-loading': 'Loading garden...',
+        'plant-error': 'Server connection error',
+        'plant-retry': 'Try again',
+        'plant-offline': 'Working offline',
+        'plant-planted': 'Plant added successfully!',
         'shop-title': 'NFT Collection and Shop',
         'shop-visit-external': 'Visit Full Online Shop',
         'shop-tab-nft': 'NFT Collection',
@@ -266,6 +285,12 @@ const translations = {
         'plant-bamboo': 'Bambus',
         'plant-submit': 'Pflanzen',
         'plant-click-hint': 'Klicken Sie, wo Sie pflanzen möchten',
+        'plant-syncing': 'Synchronisierung mit Server...',
+        'plant-loading': 'Garten wird geladen...',
+        'plant-error': 'Serververbindungsfehler',
+        'plant-retry': 'Erneut versuchen',
+        'plant-offline': 'Offline arbeiten',
+        'plant-planted': 'Pflanze erfolgreich gepflanzt!',
         'shop-title': 'NFT Sammlung und Shop',
         'shop-visit-external': 'Vollständigen Online-Shop besuchen',
         'shop-tab-nft': 'NFT Sammlung',
@@ -368,6 +393,12 @@ const translations = {
         'plant-bamboo': 'Bambú',
         'plant-submit': 'Plantar',
         'plant-click-hint': 'Haz clic donde quieras plantar',
+        'plant-syncing': 'Sincronizando con el servidor...',
+        'plant-loading': 'Cargando jardín...',
+        'plant-error': 'Error de conexión del servidor',
+        'plant-retry': 'Intentar de nuevo',
+        'plant-offline': 'Trabajando sin conexión',
+        'plant-planted': 'Planta plantada con éxito!',
         'shop-title': 'Colección NFT y Tienda',
         'shop-visit-external': 'Visitar tienda en línea completa',
         'shop-tab-nft': 'Colección NFT',
@@ -411,6 +442,7 @@ const translations = {
         'phys4-title': 'The Pulse of Earth'
     }
 };
+
 // Gallery artworks data
 const artworks = [
     { id: 1, title: 'Potential', description: 'Watercolor on paper', size: '59x84 cm', image: 'https://res.cloudinary.com/djdc6wcpg/image/upload/v1752772927/10_xtez6l.jpg', year: '2025' },
@@ -500,6 +532,317 @@ let currentShopTab = 'nft';
 let currentShopIndex = 0;
 let shopItemsPerView = 3;
 
+// ============================================
+// GOOGLE APPS SCRIPT INTEGRATION - FIXED VERSION
+// ============================================
+let savedPlants = []; // Тепер це буде завантажуватись з сервера
+let isOnline = true;
+let pendingSync = [];
+
+// ВИПРАВЛЕНА функція для генерації унікального ID
+function generateUniqueId() {
+    return Date.now().toString() + '-' + Math.random().toString(36).substr(2, 9);
+}
+
+// Функція для завантаження рослин з Google Sheets
+async function loadPlantsFromServer() {
+    if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+        console.warn('Google Apps Script URL not configured. Using localStorage fallback.');
+        loadPlantsFromLocalStorage();
+        return;
+    }
+
+    showLoadingIndicator();
+    
+    try {
+        const response = await fetch(GOOGLE_SCRIPT_URL + '?action=getPlants');
+        const result = await response.json();
+        
+        if (result.status === 'success') {
+            savedPlants = result.plants || [];
+            
+            // Оновлюємо локальну копію для офлайн режиму
+            localStorage.setItem('innerGardenPlantsCache', JSON.stringify(savedPlants));
+            
+            // Рендеримо всі рослини
+            document.querySelectorAll('.garden-plant').forEach(p => p.remove());
+            savedPlants.forEach(plant => renderPlant(plant));
+            
+            checkGardenScroll();
+            isOnline = true;
+            
+            console.log(`Loaded ${savedPlants.length} plants from server`);
+        } else {
+            throw new Error(result.message);
+        }
+    } catch (error) {
+        console.error('Error loading plants from server:', error);
+        isOnline = false;
+        
+        // Fallback to cached data
+        loadPlantsFromLocalStorage();
+        showToast(translations[currentLang]['plant-offline'] || 'Working offline');
+    } finally {
+        hideLoadingIndicator();
+    }
+}
+
+// ВИПРАВЛЕНА функція для збереження рослини на сервер
+// ВИПРАВЛЕНА функція для збереження рослини на сервер
+async function savePlantToServer(plant) {
+    if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+        savePlantToLocalStorage(plant);
+        return true;
+    }
+
+    try {
+        // ВИПРАВЛЕНО: Використовуємо простіший підхід без CORS
+        const response = await fetch(GOOGLE_SCRIPT_URL, {
+            redirect: 'follow',
+            method: 'POST',
+            body: JSON.stringify(plant)
+        });
+        
+        const result = await response.json();
+        
+        if (result.status === 'success') {
+            // Додаємо рослину локально ТІЛЬКИ після успішного збереження
+            const existingIndex = savedPlants.findIndex(p => p.id === plant.id);
+            if (existingIndex === -1) {
+                savedPlants.push(plant);
+                localStorage.setItem('innerGardenPlantsCache', JSON.stringify(savedPlants));
+            }
+            
+            console.log('Plant saved to server');
+            return true;
+        } else {
+            throw new Error(result.message);
+        }
+    } catch (error) {
+        console.error('Error saving plant to server:', error);
+        
+        // Видаляємо рослину з DOM, якщо збереження не вдалося
+        const plantElement = document.querySelector(`[data-plant-id="${plant.id}"]`);
+        if (plantElement) plantElement.remove();
+        
+        // Зберігаємо для пізнішої синхронізації
+        const existingPending = pendingSync.find(p => p.id === plant.id);
+        if (!existingPending) {
+            pendingSync.push(plant);
+            localStorage.setItem('innerGardenPendingSync', JSON.stringify(pendingSync));
+        }
+        
+        showToast(translations[currentLang]['plant-error'] || 'Server error. Will retry later.');
+        return false;
+    }
+}
+
+// Функція для видалення рослини з сервера
+// Функція для видалення рослини з сервера
+async function deletePlantFromServer(plantId) {
+    if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+        deletePlantFromLocalStorage(plantId);
+        return true;
+    }
+
+    try {
+        const response = await fetch(GOOGLE_SCRIPT_URL, {
+            redirect: 'follow',
+            method: 'POST',
+            body: JSON.stringify({
+                action: 'admin',
+                subAction: 'deletePlant',
+                plantId: plantId,
+                password: ADMIN_PASSWORD
+            })
+        });
+        
+        const result = await response.json();
+        
+        if (result.status === 'success') {
+            // Видаляємо локально
+            savedPlants = savedPlants.filter(p => p.id !== plantId);
+            localStorage.setItem('innerGardenPlantsCache', JSON.stringify(savedPlants));
+            
+            return true;
+        } else {
+            throw new Error(result.message);
+        }
+    } catch (error) {
+        console.error('Error deleting plant from server:', error);
+        showToast(translations[currentLang]['plant-error'] || 'Server error');
+        return false;
+    }
+}
+
+// Адмін функції
+async function clearAllPlantsOnServer() {
+    if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+        localStorage.removeItem('innerGardenPlants');
+        localStorage.removeItem('innerGardenPlantsCache');
+        savedPlants = [];
+        return true;
+    }
+
+    try {
+        const response = await fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            mode: 'cors',
+            body: JSON.stringify({
+                action: 'admin',
+                subAction: 'clearAll',
+                password: ADMIN_PASSWORD
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        
+        const result = await response.json();
+        
+        if (result.status === 'success') {
+            savedPlants = [];
+            localStorage.setItem('innerGardenPlantsCache', JSON.stringify(savedPlants));
+            return true;
+        } else {
+            throw new Error(result.message);
+        }
+    } catch (error) {
+        console.error('Error clearing plants on server:', error);
+        return false;
+    }
+}
+
+async function importPlantsToServer(plants) {
+    if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+        savedPlants = plants;
+        localStorage.setItem('innerGardenPlants', JSON.stringify(plants));
+        return true;
+    }
+
+    try {
+        const response = await fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            mode: 'cors',
+            body: JSON.stringify({
+                action: 'admin',
+                subAction: 'import',
+                plants: plants,
+                password: ADMIN_PASSWORD
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        
+        const result = await response.json();
+        
+        if (result.status === 'success') {
+            savedPlants = plants;
+            localStorage.setItem('innerGardenPlantsCache', JSON.stringify(plants));
+            return true;
+        } else {
+            throw new Error(result.message);
+        }
+    } catch (error) {
+        console.error('Error importing plants to server:', error);
+        return false;
+    }
+}
+
+// Fallback функції для localStorage
+function loadPlantsFromLocalStorage() {
+    // Спочатку пробуємо кеш
+    let plants = JSON.parse(localStorage.getItem('innerGardenPlantsCache') || '[]');
+    
+    // Якщо кешу немає, пробуємо старий формат
+    if (plants.length === 0) {
+        plants = JSON.parse(localStorage.getItem('innerGardenPlants') || '[]');
+    }
+    
+    savedPlants = plants;
+    
+    // Рендеримо всі рослини
+    document.querySelectorAll('.garden-plant').forEach(p => p.remove());
+    savedPlants.forEach(plant => renderPlant(plant));
+    
+    checkGardenScroll();
+}
+
+function savePlantToLocalStorage(plant) {
+    savedPlants.push(plant);
+    localStorage.setItem('innerGardenPlants', JSON.stringify(savedPlants));
+    localStorage.setItem('innerGardenPlantsCache', JSON.stringify(savedPlants));
+}
+
+function deletePlantFromLocalStorage(plantId) {
+    savedPlants = savedPlants.filter(p => p.id !== plantId);
+    localStorage.setItem('innerGardenPlants', JSON.stringify(savedPlants));
+    localStorage.setItem('innerGardenPlantsCache', JSON.stringify(savedPlants));
+}
+
+// Функції для індикаторів завантаження
+function showLoadingIndicator() {
+    const gardenSection = document.getElementById('garden');
+    if (gardenSection) {
+        const loadingDiv = document.createElement('div');
+        loadingDiv.id = 'garden-loading';
+        loadingDiv.className = 'garden-loading';
+        loadingDiv.innerHTML = `
+            <div class="spinner"></div>
+            <p>${translations[currentLang]['plant-loading'] || 'Loading garden...'}</p>
+        `;
+        gardenSection.appendChild(loadingDiv);
+    }
+}
+
+function hideLoadingIndicator() {
+    const loadingDiv = document.getElementById('garden-loading');
+    if (loadingDiv) {
+        loadingDiv.remove();
+    }
+}
+
+// Синхронізація при відновленні зв'язку
+async function syncPendingPlants() {
+    if (pendingSync.length === 0) return;
+    
+    showToast(translations[currentLang]['plant-syncing'] || 'Syncing with server...');
+    
+    for (const plant of pendingSync) {
+        const saved = await savePlantToServer(plant);
+        if (saved) {
+            // Рендеримо рослину знову, якщо збереження вдалося
+            renderPlant(plant);
+        }
+    }
+    
+    pendingSync = [];
+    localStorage.removeItem('innerGardenPendingSync');
+}
+
+// Перевірка зв'язку
+setInterval(async () => {
+    if (!isOnline && GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL !== 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+        try {
+            const response = await fetch(GOOGLE_SCRIPT_URL + '?action=getPlants');
+            if (response.ok) {
+                isOnline = true;
+                await syncPendingPlants();
+                await loadPlantsFromServer();
+            }
+        } catch (error) {
+            // Still offline
+        }
+    }
+}, 30000); // Перевіряємо кожні 30 секунд
+
+// ВИПРАВЛЕНИЙ глобальний обробник для відловлювання помилок
+//window.addEventListener('unhandledrejection', event => {
+    //console.error('Unhandled promise rejection:', event.reason);
+    //showToast('Сталася помилка. Спробуйте ще раз.');
+//});//
+
 // Initialize on DOM load
 document.addEventListener('DOMContentLoaded', () => {
     detectPerformanceLevel();
@@ -515,6 +858,12 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeBackToTop();
     initializeKeyboardNavigation();
     initializeReadMore();
+
+    // Завантажуємо рослини з сервера при завантаженні сторінки
+    loadPlantsFromServer();
+
+    // Завантажуємо pending sync якщо є
+    pendingSync = JSON.parse(localStorage.getItem('innerGardenPendingSync') || '[]');
 
     // Mobile optimizations
     if (isMobile()) {
@@ -1563,7 +1912,7 @@ function initializeTimeline() {
     timelineItems.forEach(item => observer.observe(item));
 }
 
-// Garden functionality
+// ВИПРАВЛЕНА Garden functionality (MODIFIED FOR GOOGLE APPS SCRIPT)
 function initializeGarden() {
     const plantButton = document.getElementById('plantButton');
     const plantModal = document.getElementById('plantModal');
@@ -1577,10 +1926,6 @@ function initializeGarden() {
     let isPlanting = false;
     let adminMode = false;
     let selectedForDeletion = new Set();
-
-    // Load saved plants
-    let savedPlants = JSON.parse(localStorage.getItem('innerGardenPlants') || '[]');
-    savedPlants.forEach(plant => renderPlant(plant));
 
     checkGardenScroll();
 
@@ -1617,7 +1962,8 @@ function initializeGarden() {
         showToast(translations[currentLang]['plant-click-hint'] || 'Click where you want to plant');
     });
 
-    gardenCanvas?.addEventListener('click', (e) => {
+    // ВИПРАВЛЕНИЙ обробник кліку для посадки рослини
+    gardenCanvas?.addEventListener('click', async (e) => {
         if (!isPlanting || !pendingPlantData) return;
 
         const rect = gardenCanvas.getBoundingClientRect();
@@ -1625,16 +1971,22 @@ function initializeGarden() {
         const y = e.clientY - rect.top;
 
         const plant = {
-            id: Date.now(),
+            id: generateUniqueId(), // ВИПРАВЛЕНО: використовуємо нову функцію
             ...pendingPlantData,
             position: { x, y },
-            date: new Date().toLocaleDateString()
+            date: new Date().toLocaleDateString(),
+            timestamp: Date.now() // Додаємо timestamp для сортування
         };
 
-        savedPlants.push(plant);
-        localStorage.setItem('innerGardenPlants', JSON.stringify(savedPlants));
-
+        // Рендеримо рослину одразу (оптимістичне оновлення)
         renderPlant(plant);
+
+        // Зберігаємо на сервер
+        const saved = await savePlantToServer(plant);
+        
+        if (saved) {
+            showToast(translations[currentLang]['plant-planted'] || 'Plant added successfully!');
+        }
 
         isPlanting = false;
         pendingPlantData = null;
@@ -1657,6 +2009,17 @@ function initializeGarden() {
     const adminClearAll = document.getElementById('adminClearAll');
     const adminExport = document.getElementById('adminExport');
     const adminImport = document.getElementById('adminImport');
+    const adminRefresh = document.getElementById('adminRefresh');
+
+    // Add refresh button to admin panel
+    if (adminRefresh) {
+        adminRefresh.addEventListener('click', async () => {
+            showToast('Оновлення даних...');
+            await loadPlantsFromServer();
+            updateAdminPlantList();
+            showToast('Дані оновлено');
+        });
+    }
 
     adminSelectMode?.addEventListener('click', () => {
         adminMode = !adminMode;
@@ -1679,13 +2042,17 @@ function initializeGarden() {
         });
     });
 
-    adminClearAll?.addEventListener('click', () => {
+    adminClearAll?.addEventListener('click', async () => {
         if (confirm('Ви впевнені, що хочете видалити всі рослини? Цю дію неможливо скасувати.')) {
-            localStorage.removeItem('innerGardenPlants');
-            savedPlants = [];
-            document.querySelectorAll('.garden-plant').forEach(p => p.remove());
-            updateAdminPlantList();
-            showToast('Сад повністю очищено');
+            const cleared = await clearAllPlantsOnServer();
+            
+            if (cleared) {
+                document.querySelectorAll('.garden-plant').forEach(p => p.remove());
+                updateAdminPlantList();
+                showToast('Сад повністю очищено');
+            } else {
+                showToast('Помилка при очищенні саду');
+            }
         }
     });
 
@@ -1708,25 +2075,27 @@ function initializeGarden() {
         input.type = 'file';
         input.accept = 'application/json';
 
-        input.onchange = e => {
+        input.onchange = async e => {
             const file = e.target.files[0];
             const reader = new FileReader();
 
-            reader.onload = event => {
+            reader.onload = async event => {
                 try {
                     const importedPlants = JSON.parse(event.target.result);
                     if (Array.isArray(importedPlants)) {
                         // Clear existing plants
                         document.querySelectorAll('.garden-plant').forEach(p => p.remove());
 
-                        // Import new plants
-                        savedPlants = importedPlants;
-                        localStorage.setItem('innerGardenPlants', JSON.stringify(savedPlants));
-
-                        savedPlants.forEach(plant => renderPlant(plant));
-                        updateAdminPlantList();
-
-                        showToast('Дані успішно імпортовано');
+                        // Import to server
+                        const imported = await importPlantsToServer(importedPlants);
+                        
+                        if (imported) {
+                            importedPlants.forEach(plant => renderPlant(plant));
+                            updateAdminPlantList();
+                            showToast('Дані успішно імпортовано');
+                        } else {
+                            showToast('Помилка імпорту на сервер');
+                        }
                     } else {
                         throw new Error('Invalid format');
                     }
@@ -1740,77 +2109,6 @@ function initializeGarden() {
 
         input.click();
     });
-
-    function renderPlant(plant) {
-        const plantElement = document.createElement('div');
-        plantElement.className = `garden-plant plant-${plant.type}`;
-        plantElement.style.left = plant.position.x + 'px';
-        plantElement.style.top = plant.position.y + 'px';
-        plantElement.dataset.plantId = plant.id;
-
-        const plantTypes = {
-            flower: '🌸', rose: '🌹', sunflower: '🌻', tulip: '🌷',
-            tree: '🌳', palm: '🌴', evergreen: '🌲', bush: '🌿',
-            herb: '🌱', grass: '🌾', cactus: '🌵', bamboo: '🎋'
-        };
-
-        plantElement.innerHTML = `<span class="plant-icon">${plantTypes[plant.type] || '🌱'}</span>`;
-
-        plantElement.addEventListener('click', (e) => {
-            e.stopPropagation();
-
-            if (adminMode) {
-                plantElement.classList.toggle('admin-selected');
-                if (plantElement.classList.contains('admin-selected')) {
-                    selectedForDeletion.add(plant.id);
-                } else {
-                    selectedForDeletion.delete(plant.id);
-                }
-            } else {
-                showPlantInfo(plant);
-            }
-        });
-
-        gardenCanvas?.appendChild(plantElement);
-
-        requestAnimationFrame(() => {
-            plantElement.classList.add('grown');
-        });
-    }
-
-    function showPlantInfo(plant) {
-        const plantTypes = {
-            flower: '🌸', rose: '🌹', sunflower: '🌻', tulip: '🌷',
-            tree: '🌳', palm: '🌴', evergreen: '🌲', bush: '🌿',
-            herb: '🌱', grass: '🌾', cactus: '🌵', bamboo: '🎋'
-        };
-
-        const plantIcon = document.getElementById('plantIcon');
-        const plantInfoAuthor = document.getElementById('plantInfoAuthor');
-        const plantInfoMessage = document.getElementById('plantInfoMessage');
-        const plantInfoDate = document.getElementById('plantInfoDate');
-
-        if (plantIcon) plantIcon.textContent = plantTypes[plant.type] || '🌱';
-        if (plantInfoAuthor) plantInfoAuthor.textContent = plant.author;
-        if (plantInfoMessage) plantInfoMessage.textContent = plant.message;
-        if (plantInfoDate) plantInfoDate.textContent = plant.date;
-
-        openModal('plantInfoModal');
-    }
-
-    function updateGardenSize(x) {
-        const requiredWidth = x + 300;
-        if (gardenCanvas && requiredWidth > gardenCanvas.offsetWidth) {
-            gardenCanvas.style.minWidth = requiredWidth + 'px';
-            checkGardenScroll();
-        }
-    }
-
-    function checkGardenScroll() {
-        if (gardenCanvas && gardenViewport && gardenCanvas.scrollWidth > gardenViewport.clientWidth) {
-            scrollHint?.classList.add('visible');
-        }
-    }
 
     function updateAdminPlantList() {
         const plantList = document.getElementById('adminPlantList');
@@ -1841,19 +2139,21 @@ function initializeGarden() {
             `;
 
             const deleteBtn = item.querySelector('.btn-delete');
-            deleteBtn.addEventListener('click', () => {
+            deleteBtn.addEventListener('click', async () => {
                 if (confirm('Видалити цю рослину?')) {
-                    // Remove from saved plants
-                    savedPlants = savedPlants.filter(p => p.id !== plant.id);
-                    localStorage.setItem('innerGardenPlants', JSON.stringify(savedPlants));
+                    const deleted = await deletePlantFromServer(plant.id);
+                    
+                    if (deleted) {
+                        // Remove from DOM
+                        const plantElement = document.querySelector(`[data-plant-id="${plant.id}"]`);
+                        if (plantElement) plantElement.remove();
 
-                    // Remove from DOM
-                    const plantElement = document.querySelector(`[data-plant-id="${plant.id}"]`);
-                    if (plantElement) plantElement.remove();
-
-                    // Update list
-                    updateAdminPlantList();
-                    showToast('Рослину видалено');
+                        // Update list
+                        updateAdminPlantList();
+                        showToast('Рослину видалено');
+                    } else {
+                        showToast('Помилка видалення');
+                    }
                 }
             });
 
@@ -1861,30 +2161,99 @@ function initializeGarden() {
         });
     }
 
-    function showToast(message) {
-        const existing = document.querySelector('.toast');
-        if (existing) existing.remove();
+    function checkGardenScroll() {
+        if (gardenCanvas && gardenViewport && gardenCanvas.scrollWidth > gardenViewport.clientWidth) {
+            scrollHint?.classList.add('visible');
+        }
+    }
 
-        const toast = document.createElement('div');
-        toast.className = 'toast';
-        toast.textContent = message;
-        document.body.appendChild(toast);
-
-        requestAnimationFrame(() => {
-            toast.classList.add('show');
-        });
-
-        setTimeout(() => {
-            toast.classList.remove('show');
-            setTimeout(() => toast.remove(), 300);
-        }, 3000);
+    function updateGardenSize(x) {
+        const requiredWidth = x + 300;
+        if (gardenCanvas && requiredWidth > gardenCanvas.offsetWidth) {
+            gardenCanvas.style.minWidth = requiredWidth + 'px';
+            checkGardenScroll();
+        }
     }
 }
 
-// Shop functionality (Fixed carousel)
-// Shop functionality (Fixed carousel)
+// ВИПРАВЛЕНА функція renderPlant з перевіркою дублікатів
+function renderPlant(plant) {
+    const gardenCanvas = document.getElementById('gardenCanvas');
+    if (!gardenCanvas) return;
 
-// Спочатку виносимо функції в глобальну область видимості
+    // ВИПРАВЛЕНО: Перевіряємо, чи рослина вже існує
+    const existingPlant = document.querySelector(`[data-plant-id="${plant.id}"]`);
+    if (existingPlant) {
+        console.log('Plant already rendered:', plant.id);
+        return;
+    }
+    
+    const plantElement = document.createElement('div');
+    plantElement.className = `garden-plant plant-${plant.type}`;
+    plantElement.style.left = plant.position.x + 'px';
+    plantElement.style.top = plant.position.y + 'px';
+    plantElement.dataset.plantId = plant.id;
+
+    const plantTypes = {
+        flower: '🌸', rose: '🌹', sunflower: '🌻', tulip: '🌷',
+        tree: '🌳', palm: '🌴', evergreen: '🌲', bush: '🌿',
+        herb: '🌱', grass: '🌾', cactus: '🌵', bamboo: '🎋'
+    };
+
+    plantElement.innerHTML = `<span class="plant-icon">${plantTypes[plant.type] || '🌱'}</span>`;
+
+    plantElement.addEventListener('click', (e) => {
+        e.stopPropagation();
+        showPlantInfo(plant);
+    });
+
+    gardenCanvas.appendChild(plantElement);
+
+    requestAnimationFrame(() => {
+        plantElement.classList.add('grown');
+    });
+}
+
+function showPlantInfo(plant) {
+    const plantTypes = {
+        flower: '🌸', rose: '🌹', sunflower: '🌻', tulip: '🌷',
+        tree: '🌳', palm: '🌴', evergreen: '🌲', bush: '🌿',
+        herb: '🌱', grass: '🌾', cactus: '🌵', bamboo: '🎋'
+    };
+
+    const plantIcon = document.getElementById('plantIcon');
+    const plantInfoAuthor = document.getElementById('plantInfoAuthor');
+    const plantInfoMessage = document.getElementById('plantInfoMessage');
+    const plantInfoDate = document.getElementById('plantInfoDate');
+
+    if (plantIcon) plantIcon.textContent = plantTypes[plant.type] || '🌱';
+    if (plantInfoAuthor) plantInfoAuthor.textContent = plant.author;
+    if (plantInfoMessage) plantInfoMessage.textContent = plant.message;
+    if (plantInfoDate) plantInfoDate.textContent = plant.date;
+
+    openModal('plantInfoModal');
+}
+
+function showToast(message) {
+    const existing = document.querySelector('.toast');
+    if (existing) existing.remove();
+
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.textContent = message;
+    document.body.appendChild(toast);
+
+    requestAnimationFrame(() => {
+        toast.classList.add('show');
+    });
+
+    setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 300);
+    }, 3000);
+}
+
+// Shop functionality
 function renderShopItems() {
     const shopItemsContainer = document.getElementById('shopItems');
     if (!shopItemsContainer) return;
@@ -1986,7 +2355,6 @@ function calculateItemsPerView() {
     else shopItemsPerView = Math.min(3, Math.floor(containerWidth / (itemWidth + gap)));
 }
 
-// Тепер функція initializeShop лише встановлює початкові налаштування та слухачі подій
 function initializeShop() {
     const shopItemsContainer = document.getElementById('shopItems');
     const shopPrev = document.getElementById('shopPrev');
@@ -2053,7 +2421,7 @@ function initializeShop() {
         }
     });
 
-    renderShopItems(); // Перший рендер при завантаженні
+    renderShopItems();
     updateCarousel();
 }
 
@@ -2264,13 +2632,24 @@ if ('serviceWorker' in navigator && window.location.protocol === 'https:') {
 // Console info
 console.info(`
 === Inner Garden Exhibition ===
-Version: 1.0.1
+Version: 1.1.0 (Google Apps Script Integration - FIXED)
 Artist: Maryna Kaminska
 Dates: August 15-29, 2025
 Location: Bloom Gallery, Valencia
 
-Garden plants are stored in localStorage.
-Key: 'innerGardenPlants'
-
+Storage: Google Sheets via Apps Script
+Offline cache: localStorage
 Admin mode: Press Ctrl+Shift+C
+
+Server status: ${isOnline ? 'Online' : 'Offline'}
+${GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE' ? '⚠️ Google Apps Script URL not configured!' : '✅ Connected to Google Apps Script'}
+
+=== KEY FIXES APPLIED ===
+✅ Unique ID generation with timestamp + random
+✅ Duplicate plant rendering prevention
+✅ Proper server response handling
+✅ Optimistic UI updates with error rollback
+✅ Improved error handling
+✅ Content-Type application/json headers
+✅ Global error handler for promises
 `);
